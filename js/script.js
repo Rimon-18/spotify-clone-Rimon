@@ -1,5 +1,5 @@
 
-
+const BASE_URL = "https://spotify-clone-rimon.onrender.com"
 
 
 
@@ -28,7 +28,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${currFolder}/`)
+  let a = await fetch(`${BASE_URL}/${currFolder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response
@@ -74,7 +74,7 @@ async function getSongs(folder) {
 const playmusic = (track, pause = false) => {
     // let audio = new Audio("/songs/" +  track)
     // currentSong.src = `${currFolder}` + track
-    currentSong.src = `http://127.0.0.1:3000/${currFolder}/` + encodeURIComponent(track)
+    currentSong.src = `${BASE_URL}/${currFolder}/` + encodeURIComponent(track)
     if (!pause) {
 
         currentSong.play()
@@ -87,7 +87,7 @@ const playmusic = (track, pause = false) => {
 
 }
 async function displayAllAlbums() {
-     let a = await fetch(`http://127.0.0.1:3000/songs/`)
+    let a = await fetch(`${BASE_URL}/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response
@@ -99,7 +99,7 @@ async function displayAllAlbums() {
     if (e.href.includes("/songs")) {
         let folder = e.href.split("/").slice(-2)[0]
         //get the meta data of the folder
-         let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`)
+        let a = await fetch(`${BASE_URL}/songs/${folder}/info.json`)
     let response = await a.json();
     console.log(response);
     cardContainer.innerHTML = cardContainer.innerHTML+`<div  data-folder="playlist1" class="card ">
