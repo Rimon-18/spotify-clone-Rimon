@@ -1,0 +1,11 @@
+<svg  width="40" height="40" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle  cx="24" cy="24" r="22" fill="#121212" stroke="#121212" stroke-width="2"/>
+
+  <!-- Next Icon -->
+  <!-- Triangle -->
+  <polygon points="18,16 30,24 18,32" fill="white"/>
+  
+  <!-- Vertical Bar -->
+  <rect x="30" y="14" width="4" height="20" rx="1" fill="white"/>
+</svg>
