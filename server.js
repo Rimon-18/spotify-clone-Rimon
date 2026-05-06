@@ -1,20 +1,15 @@
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve all static files
+// Enable directory listing
+const serveIndex = require("serve-index");
+
 app.use(express.static(path.join(__dirname)));
-
-// Serve songs folder
 app.use("/songs", express.static(path.join(__dirname, "songs")));
-
-// Handle all routes
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
+app.use("/songs", serveIndex(path.join(__dirname, "songs"), {"icons": true}));
 
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
